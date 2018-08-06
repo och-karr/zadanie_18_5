@@ -4,15 +4,15 @@ import styles from './UserForm.css';
 class UserForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {name: ''};
+        this.state = {name: ''}; //wlasny stan, nie ten co w App
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(e) { //zatwierdza formularz modyfikując tym samym stan w komponencie App
+        e.preventDefault(); //zapobiegamy domyslnemu zachowaniu
         this.props.onUserSubmit(this.state.name);
     }
 
-    handleChange(e) {
+    handleChange(e) { //modyfikowanie inputa przez uzytkownika
         this.setState({ name : e.target.value });
     }
 

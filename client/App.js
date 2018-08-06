@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import io from 'socket.io-client';
 import styles from './App.css';
 import MessageForm from './MessageForm';
@@ -15,28 +16,29 @@ class App extends Component {
     }
 
     componentDidMount() {
-        socket.on('message', message => this.messageReceive(message));
-        socket.on('update', ({users}) => this.chatUpdate(users));
+        socket.on('message', message => this.messageReceive(message)); //nasluchiwanie na message
+        socket.on('update', ({users}) => this.chatUpdate(users)); //nasluchiwanie na update
     }
 
-    messageReceive(message) {
+    messageReceive(message) {//odbieranie wiad. i aktualizacja stanu wiad.
         const messages = [message, ...this.state.messages];
-        this.setState({messages});
+        this.setState({messages}); //aktualizaca stanu i wywolanie render
+        //ES6: {messages} zamiast {messages: messages}
     }
 
-    chatUpdate(users) {
+    chatUpdate(users) { //aktualizacja stanu uzytkownikow
         this.setState({users});
     }
     
-    handleMessageSubmit(message) {
+    handleMessageSubmit(message) { //wysylanie wiadomosci do serwera
         const messages = [message, ...this.state.messages];
-        this.setState({messages});
-        socket.emit('message', message);
+        this.setState({messages}); //aktualizacja biezacego stanu aplikacji
+        socket.emit('message', message); //emitujemy wyslana wiadomosc, by wyswietlila sie reszcie uzytkownikow
     }
 
-    handleUserSubmit(name) {
+    handleUserSubmit(name) { //tworzenie nowego uzytkownika
         this.setState({name});
-        socket.emit('join', name);
+        socket.emit('join', name); //wyslanie informacji do reszty ze dolaczylismy
     }
 
     render() {
@@ -58,15 +60,15 @@ class App extends Component {
                 </div>
                 <div className={styles.AppBody}>
                     <UsersList
-                        users={this.state.users}
+                        users={this.state.users} //dane nt. uzytkownikow
                     />
                     <div className={styles.MessageWrapper}>
                         <MessageList
-                            messages={this.state.messages}
+                            messages={this.state.messages} //props - lista wiadomosci
                         />
                         <MessageForm
                             onMessageSubmit={message => this.handleMessageSubmit(message)}
-                            name={this.state.name}
+                            name={this.state.name} //nazwa uzytkownika ktory wysyla wiadomosc
                         />
                     </div>
                 </div>
@@ -76,11 +78,11 @@ class App extends Component {
 
     renderUserForm() {
         return (
-            <UserForm onUserSubmit={
+            <UserForm onUserSubmit={ //potwierdzenie wejścia użytkownika do czatu.
                 name => this.handleUserSubmit(name)
             } />
         )
     }
 };
 
-export default App;
+export default hot(module)(App);

@@ -4,17 +4,17 @@ import styles from './MessageForm.css';
 class MessageForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {text: ''};
+        this.state = {text: ''}; //stan poczatkowy formularza
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const message = {
-            from : this.props.name,
-            text : this.state.text
+            from : this.props.name, //nadawca z propsow
+            text : this.state.text //text ze stanu - input
         };
         this.props.onMessageSubmit(message);
-        this.setState({ text: '' });
+        this.setState({ text: '' }); //wyczyszczenie text
     }
 
     changeHandler(e) {
