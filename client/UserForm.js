@@ -19,6 +19,7 @@ class UserForm extends Component {
     render() {
         return(
             <form className={styles.UserForm} onSubmit={e => this.handleSubmit(e)}>
+            <p>Welcome to our chat.</p>
                 <input
                     className={styles.UserInput}
                     placeholder='Write your nickname and press enter'

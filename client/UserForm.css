@@ -1,15 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:400,600');
+
 .UserForm {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
+    font-family: 'Exo 2', serif;
+}
+
+p {
+    color: #999999;
 }
 
 .UserInput {
     padding: 20px;
-    font-size: 2em;
+    font-size: 1.8em;
+    text-align: center;
     border: 0;
     border-bottom: 1px solid #ccc;
     width: 510px;
+    font-family: 'Exo 2', serif;
 }

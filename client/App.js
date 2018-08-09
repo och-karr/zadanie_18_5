@@ -59,9 +59,11 @@ class App extends Component {
                     </div>
                 </div>
                 <div className={styles.AppBody}>
-                    <UsersList
-                        users={this.state.users} //dane nt. uzytkownikow
-                    />
+                    <div className={styles.UsersList}>
+                        <UsersList
+                            users={this.state.users} //dane nt. uzytkownikow
+                        />
+                    </div>
                     <div className={styles.MessageWrapper}>
                         <MessageList
                             messages={this.state.messages} //props - lista wiadomosci

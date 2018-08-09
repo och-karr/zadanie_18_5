@@ -12325,28 +12325,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //
-// -!
-//
-//
-//
-//
-//
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-
-//
-
-var socket = (0, _socket2.default)('/'); //
+var socket = (0, _socket2.default)('/');
 
 var App = function (_Component) {
     _inherits(App, _Component);
 
-    //
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props)); //
-
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = { users: [], messages: [], text: '', name: '' };
         return _this;
@@ -12357,7 +12346,6 @@ var App = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            //
             socket.on('message', function (message) {
                 return _this2.messageReceive(message);
             }); //nasluchiwanie na message
@@ -12398,7 +12386,6 @@ var App = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            //
             return this.state.name !== '' ? this.renderLayout() : this.renderUserForm();
         }
     }, {
@@ -12406,7 +12393,6 @@ var App = function (_Component) {
         value: function renderLayout() {
             var _this3 = this;
 
-            //
             return _react2.default.createElement(
                 'div',
                 { className: _App2.default.App },
@@ -12451,7 +12437,6 @@ var App = function (_Component) {
         value: function renderUserForm() {
             var _this4 = this;
 
-            //
             return _react2.default.createElement(_UserForm2.default, { onUserSubmit: //potwierdzenie wejścia użytkownika do czatu.
                 function onUserSubmit(name) {
                     return _this4.handleUserSubmit(name);
@@ -12464,8 +12449,7 @@ var App = function (_Component) {
 
 ;
 
-exports.default = (0, _reactHotLoader.hot)(module)(App); //
-// export default App;
+exports.default = (0, _reactHotLoader.hot)(module)(App);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)(module)))
 
 /***/ }),
@@ -18316,7 +18300,7 @@ var MessageForm = function (_Component) {
     }]);
 
     return MessageForm;
-}(Component);
+}(_react.Component);
 
 exports.default = MessageForm;
 
@@ -18778,3 +18762,4 @@ exports.locals = {
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=app.bundle.js.map
